@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "event-emitter": "^0.3.5"
+    "event-emitter": "^0.3.5",
+    "ramda": "^0.26.1",
+    "ramda-fantasy": "^0.8.0"
   }
 }

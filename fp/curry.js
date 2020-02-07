@@ -17,3 +17,14 @@ const curry2 = (fn, ...par) => {
   )
   return par.length ? curried(...par) : curried;
 }
+
+
+///// Example: curry timer
+const callback = () => {
+  console.log('Callback from timer')
+};
+
+const setTimeoutCbLast = (timeout, cb) => setTimeout(cb, timeout);
+
+const timer = curry1(setTimeoutCbLast);
+timer(2000)(callback);
