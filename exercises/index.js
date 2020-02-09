@@ -324,3 +324,39 @@ const binarySearch2 = (array, target) => {
   };
   return binarySearchHelper(array, target, 0, array.length - 1);
 }
+
+
+
+
+/* Find three largest numbers */
+
+/**
+ * ([1, 326, 8, 44]) => [8, 44, 326]
+ * @param array
+ * @returns {number|null[]}
+ */
+// O(n) time | O(1) space
+const findThreeLargestNumbers = (array) => {
+  const shiftAndUpdate = (arr, num, index) => {
+    for (let i = 0; i < index + 1; i++) {
+      i === index ? arr[i] = num : arr[i] = arr[i + 1];
+    }
+  };
+
+  const updateLargest = (threeLargestArr, num) => {
+    const getIfNeedShift = index => threeLargestArr[index] === null || num > threeLargestArr[index];
+
+    for (let i = 2; i >= 0; i--) {
+      if (getIfNeedShift(i)) {
+        shiftAndUpdate(threeLargestArr, num, i);
+        break;
+      }
+    }
+  }
+
+  const threeLargest = [null, null, null];
+  for (let num of array) {
+    updateLargest(threeLargest, num);
+  }
+  return threeLargest;
+};
