@@ -360,3 +360,39 @@ const findThreeLargestNumbers = (array) => {
   }
   return threeLargest;
 };
+
+
+
+
+
+/* Bubble sort */
+
+/**
+ * ([8,5,2,3,5,9,6]) => [2,3,5,5,6,8,9]
+ * @param arr{Array}
+ * @returns {Array}
+ */
+// O(n^2) | O(1) space
+const bubbleSort = (arr) => {
+  let isSorted = false;
+  let counter = 0;
+
+  const swap = (i, j, array) => {
+    const first = array[i];
+    const second = array[j];
+    array[i] = second;
+    array[j] = first;
+  }
+
+  while (!isSorted) {
+    isSorted = true;
+    for (let i = 0; i < arr.length - counter; i++) {
+      if (arr[i] > arr[i + 1]) {
+        swap(i, i + 1, arr);
+        isSorted = false;
+      }
+    }
+    counter++;
+  }
+  return arr;
+}
